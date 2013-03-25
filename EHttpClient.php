@@ -9,18 +9,18 @@
 
  * Redistribution and use in source and binary forms, with or without modification,
  * are permitted provided that the following conditions are met:
- * 
+ *
  *     * Redistributions of source code must retain the above copyright notice,
  *       this list of conditions and the following disclaimer.
  *
  *     * Redistributions in binary form must reproduce the above copyright notice,
  *       this list of conditions and the following disclaimer in the documentation
  *       and/or other materials provided with the distribution.
- * 
+ *
  *     * Neither the name of Zend Technologies USA, Inc. nor the names of its
  *       contributors may be used to endorse or promote products derived from this
  *       software without specific prior written permission.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -193,11 +193,11 @@ class EHttpClient {
 
 	/**
 	 * Ordered list of keys from key/value pair data to include in body
-	 * 
+	 *
 	 * An associative array, where each element is of the format:
 	 *   '<field name>' => VTYPE_SCALAR | VTYPE_FILE
-	 * 
-	 * @var array 
+	 *
+	 * @var array
 	 */
 	protected $body_field_order = array();
 
@@ -245,7 +245,7 @@ class EHttpClient {
 
 	/**
 	 * Fileinfo magic database resource
-	 * 
+	 *
 	 * This varaiable is populated the first time _detectFileMimeType is called
 	 * and is then reused on every call to this method
 	 *
@@ -824,7 +824,7 @@ class EHttpClient {
 	 * This is usefull for some services
 	 *
 	 * @param boolean $status
-	 * @return Zend_Http_Client
+	 * @return EHttpClient
 	 */
 	public function setUnmaskStatus($status = true)
 	{
@@ -852,7 +852,7 @@ class EHttpClient {
 	 * headers and last_*
 	 *
 	 * @param bool $clearAll Should all data be cleared?
-	 * @return Zend_Http_Client
+	 * @return EHttpClient
 	 */
 	public function resetParameters($clearAll = false)
 	{
@@ -953,7 +953,7 @@ class EHttpClient {
 	 * Set streaming for received data
 	 *
 	 * @param string|boolean $streamfile Stream file, true for temp file, false/null for no streaming
-	 * @return Zend_Http_Client
+	 * @return EHttpClient
 	 */
 	public function setStream($streamfile = true)
 	{
@@ -1319,7 +1319,7 @@ class EHttpClient {
 					$boundary = '---YIIHTTPCLIENT-' . md5(microtime());
 					$this->setHeaders(self::CONTENT_TYPE, self::ENC_FORMDATA . "; boundary={$boundary}");
 
-					// Encode all files and POST vars in the order they were given 
+					// Encode all files and POST vars in the order they were given
 					foreach ($this->body_field_order as $fieldName => $fieldType)
 					{
 						switch ($fieldType)
@@ -1393,8 +1393,8 @@ class EHttpClient {
 	 * necessarily unique. If one of the parameters in as array, it will also
 	 * add a [] suffix to the key.
 	 *
-	 * @deprecated 
-	 * 
+	 * @deprecated
+	 *
 	 * @param array $parray The parameters array
 	 * @param bool $urlencode Whether to urlencode the name and value
 	 * @return array
@@ -1436,12 +1436,12 @@ class EHttpClient {
 
 	/**
 	 * Attempt to detect the MIME type of a file using available extensions
-	 * 
+	 *
 	 * This method will try to detect the MIME type of a file. If the fileinfo
-	 * extension is available, it will be used. If not, the mime_magic 
+	 * extension is available, it will be used. If not, the mime_magic
 	 * extension which is deprected but is still available in many PHP setups
-	 * will be tried. 
-	 * 
+	 * will be tried.
+	 *
 	 * If neither extension is available, the default application/octet-stream
 	 * MIME type will be returned
 	 *
